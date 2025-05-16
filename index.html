@@ -6,6 +6,65 @@
     <title>BTL</title>
 </head>
 <body>
-    <h1>hihihiiii</h1>
+    <nav>
+        <a href="/BTL/ver01/index.html">About H-T</a>
+        <a href="/BTL/ver01/feed.html">Home</a>
+        <a href="/BTL/ver01/tailieu.html">Tài liệu</a>
+        <button onclick="showLogin()" style="border-radius: 25px;">Đăng nhập/Đăng ký</button>
+    </nav>
+
+    <div class="content">
+        <img src="/BTL/ver01/source/11CB3021.jpg" alt="anh huong" class="anh1">
+
+        <div class="chat-bubble">
+            <h1>Về trang web</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur harum natus dignissimos laudantium reiciendis architecto earum nam sapiente obcaecati odio cum illo, deserunt iste amet voluptas aut ratione incidunt unde!</p>
+        </div>
+    </div>
+
+    <!-- Khung đăng nhập (Modal) -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideLogin()">&times;</span>
+            <h2>Đăng ký</h2>
+            <input type="text" placeholder="Email"><br>
+            <input type="text" placeholder="Tên đăng nhập"><br>
+            <input type="password" placeholder="Mật khẩu"><br>
+            <button onclick="register()">Đăng ký</button>
+
+            <h2>Đăng nhập</h2>
+            <input type="text" id="loginUsername" placeholder="Tên đăng nhập"><br>
+            <input type="password" id="loginPassword" placeholder="Mật khẩu"><br>
+            <button onclick="login()">Đăng nhập</button>
+            <h1>hihii</h1>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.getElementById("loginModal").style.display = "flex";
+            document.querySelector(".content").classList.add("blur-background");
+        }
+
+        function hideLogin() {
+            document.getElementById("loginModal").style.display = "none";
+            document.querySelector(".content").classList.remove("blur-background");
+        }
+
+        function register() {
+            alert("Đăng ký thành công!");
+        }
+
+        function login() {
+            const username = document.getElementById("loginUsername").value;
+            const password = document.getElementById("loginPassword").value;
+
+            if (username && password) {
+                window.location.href = "/BTL/ver01/feed.html";
+            } else {
+                alert("Vui lòng nhập thông tin đăng nhập!");
+            }
+        }
+    </script>
 </body>
 </html>
