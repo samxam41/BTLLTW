@@ -1,0 +1,58 @@
+<!-- main.handlebars - Layout chính -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">About H-T</a>
+        <a href="/home">Home</a>
+        <a href="/documents">Tài liệu</a>
+        <a href="/login" id="user-btn">Đăng nhập/Đăng ký</a>
+    </nav>
+
+    <div class="container">
+        {{{body}}}
+    </div>
+</body>
+</html>
+
+<!-- about.handlebars - Trang giới thiệu -->
+<h1>About H-T</h1>
+<p>Chào mừng đến với H-T. Đây là trang giới thiệu.</p>
+
+<!-- home.handlebars - Trang chính -->
+<h1>Home</h1>
+<h2>Hot Posts</h2>
+<ul>
+    {{#each hotPosts}}
+    <li>{{this.title}} - {{this.description}}</li>
+    {{/each}}
+</ul>
+
+<h2>Latest Posts</h2>
+<ul>
+    {{#each latestPosts}}
+    <li>{{this.title}} - {{this.description}}</li>
+    {{/each}}
+</ul>
+
+<!-- documents.handlebars - Trang tài liệu -->
+<h1>Upload Documents</h1>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="document" required>
+    <button type="submit">Upload</button>
+</form>
+
+<!-- login.handlebars - Trang đăng nhập -->
+<h1>Login</h1>
+<form action="/login" method="post">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+    {{#if error}}<p style="color:red;">{{error}}</p>{{/if}}
+</form>
